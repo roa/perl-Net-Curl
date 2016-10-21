@@ -308,6 +308,7 @@ sub get_constants_headers
         open( H, "<", $curl_h )
           or die "Cannot open $curl_h: " . $!;
         while (<H>) {
+            next if /CURL_STRICTER/;
             if (/^#define (CURL[A-Za-z0-9_]*)/) {
                 $syms{$1} = 1;
             }
